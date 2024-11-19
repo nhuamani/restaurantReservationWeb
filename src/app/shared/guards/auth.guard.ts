@@ -5,11 +5,11 @@ import { AuthService } from "../services/auth.service";
 export const authGuard: CanActivateFn = (route, state) => {
     const authService = inject(AuthService);
     const router = inject(Router);
-
-    if(authService.isAuthenticated()) {
-        return true;
+  
+    if (authService.isAuthenticated()) {
+      return true; // Permitir acceso si está autenticado
     } else {
-        router.navigate(['/auth/sign-in']);
-        return false;
+      router.navigate(['/auth/sign-in']); // Redirigir a la página de inicio de sesión si no está autenticado
+      return false;
     }
-}
+  };
