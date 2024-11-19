@@ -26,10 +26,6 @@ export class AuthService {
     );
   }
 
-  signup(signupRequest: SignupRequest): Observable<Profile> {
-    return this.http.post<Profile>(`${this.baseURL}/sign-up`, signupRequest);
-  }
-
   logout(): void {
     this.storageService.clearAuthData();
   }
@@ -41,5 +37,9 @@ export class AuthService {
   getCurrentUser(): Profile | null {
     const authData = this.storageService.getAuthData();
     return authData ? authData.user : null;
+  }
+
+  signup(signupRequest: SignupRequest): Observable<Profile> {
+    return this.http.post<Profile>(`${this.baseURL}/sign-up`, signupRequest);
   }
 }

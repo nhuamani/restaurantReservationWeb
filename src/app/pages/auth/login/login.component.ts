@@ -17,7 +17,6 @@ import { AuthRequest } from '../../../shared/models/request/auth-request.model';
   standalone: true,
   imports: [
     CommonModule,
-    MatSnackBarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatCardModule,
