@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
-
 import { AuthService } from '../../../shared/services/auth.service';
 import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
 import { SignupRequest } from '../../../shared/models/request/signup-request.model';

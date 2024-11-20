@@ -1,5 +1,6 @@
 import { RestaurantResponse } from "./restaurant-response.model";
 
+
 export interface PaginatedResponse {
   totalElements: number;
   totalPages: number;

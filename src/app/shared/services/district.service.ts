@@ -10,10 +10,10 @@ import { DistrictResponse } from "../models/response/district-response.model";
 })
 export class DistrictService {
 
-    private baseUrl:string = `${environment.HOST}/districts`;
-    private htttp = inject(HttpClient);
+  private baseUrl:string = `${environment.HOST}/districts`;
+  private htttp = inject(HttpClient);
 
-    getAllDistricts(): Observable<DistrictResponse[]> {
-        return this.htttp.get<DistrictResponse[]>(this.baseUrl);
-    }
+  getAllDistricts(): Observable<DistrictResponse[]> {
+    return this.htttp.get<DistrictResponse[]>(this.baseUrl);
+  }
 }

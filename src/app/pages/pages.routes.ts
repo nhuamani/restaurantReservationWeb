@@ -5,6 +5,7 @@ import { CatalogRestaurantComponent } from "./home/catalog-restaurant/catalog-re
 import { ReservationFormComponent } from "./home/reservation/reservation-form/reservation-form.component";
 import { ReservationHistoryComponent } from "./home/reservation/reservation-history/reservation-history.component";
 
+
 export const pagesRoutes: Routes = [	
 	{ path: 'sign-in', component: LoginComponent },
 	{ path: 'sign-up', component: RegisterComponent },
@@ -14,5 +15,5 @@ export const pagesRoutes: Routes = [
 			{ path: 'form', component: ReservationFormComponent },
 			{ path: 'history', component: ReservationHistoryComponent }
 		]
-	 }
+	}
 ];
