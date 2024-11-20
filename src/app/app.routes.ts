@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
-    { path: '',  redirectTo: 'auth/sign-in', pathMatch: 'full' },
+  { path: '',  redirectTo: 'auth/sign-in', pathMatch: 'full' },
 	{
 		path: 'auth',		
 		loadComponent: () => import('./pages/auth/layout/layout.component').then((x) => x.LayoutComponent),

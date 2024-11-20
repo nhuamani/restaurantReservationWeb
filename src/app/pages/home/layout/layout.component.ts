@@ -27,11 +27,11 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class LayoutComponent {
   private authService = inject(AuthService);
-  private router = inject(Router);    
+  private router = inject(Router);
 
   get user() {
     return this.authService.getCurrentUser();
-  }  
+  }
 
   logout() {
     this.authService.logout();

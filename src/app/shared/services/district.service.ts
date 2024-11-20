@@ -16,5 +16,4 @@ export class DistrictService {
     getAllDistricts(): Observable<DistrictResponse[]> {
         return this.htttp.get<DistrictResponse[]>(this.baseUrl);
     }
-
 }
