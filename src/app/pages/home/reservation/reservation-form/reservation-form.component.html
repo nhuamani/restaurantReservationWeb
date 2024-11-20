@@ -44,8 +44,8 @@
                         <p class="total-amount">Total a pagar: <span>{{ totalAmount() | currency }}</span></p>
             
                         <div class="button-group">
-                            <button mat-raised-button color="primary" type="submit" [disabled]="!reservationForm.valid">Reservar</button>
-                            <button *ngIf="!reservationConfirmed" mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!reservationForm.valid"><mat-icon>book_online</mat-icon>Reservar</button>
+                            <button *ngIf="!reservationConfirmed" mat-raised-button color="warn" type="button" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button mat-raised-button color="primary" >Pagar con PayPal</button>
+                        <button mat-raised-button><mat-icon>paypal</mat-icon>Pagar con PayPal</button>
                     </div>
             
                 </div>
