@@ -13,7 +13,7 @@
                 <p>Precio por persona: {{ restaurant.pricePerPerson | currency }}</p>
             </div>
         
-            @if(!showPaypalButton){
+            @if(!showPaypalButton) {
                 <!-- Muestra el formulario de reserva solo si NO se está mostrando el botón de PayPal -->
                 <div class="reservation-form">
                     <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
@@ -49,7 +49,7 @@
                         </div>
                     </form>
                 </div>
-            }@else {
+            } @else {
                 <!-- Sección de confirmación de pago con PayPal -->
                 <div class="payment-confirmation-container">
                     <div class="confirmation-message">
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button mat-raised-button><mat-icon>paypal</mat-icon>Pagar con PayPal</button>
+                        <button mat-raised-button (click)="onPayWithPayPal()"><mat-icon>paypal</mat-icon>Pagar con PayPal</button>
                     </div>
             
                 </div>

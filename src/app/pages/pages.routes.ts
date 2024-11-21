@@ -4,6 +4,7 @@ import { RegisterComponent } from "./auth/register/register.component";
 import { CatalogRestaurantComponent } from "./home/catalog-restaurant/catalog-restaurant.component";
 import { ReservationFormComponent } from "./home/reservation/reservation-form/reservation-form.component";
 import { ReservationHistoryComponent } from "./home/reservation/reservation-history/reservation-history.component";
+import { ReservationConfirmationComponent } from "./home/reservation/reservation-confirmation/reservation-confirmation.component";
 
 
 export const pagesRoutes: Routes = [	
@@ -13,7 +14,8 @@ export const pagesRoutes: Routes = [
 	{ path: 'reservation',
 		children: [
 			{ path: 'form', component: ReservationFormComponent },
-			{ path: 'history', component: ReservationHistoryComponent }
+			{ path: 'history', component: ReservationHistoryComponent },
+			{ path: 'confirmation', component: ReservationConfirmationComponent }
 		]
 	}
 ];

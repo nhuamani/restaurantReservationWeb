@@ -1,3 +1,4 @@
+import { CheckoutService } from './../../../../shared/services/checkout.service';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -44,6 +45,7 @@ export class ReservationFormComponent {
   private router = inject(Router);
   private restaurantService = inject(RestaurantService);
   private authService = inject(AuthService);
+  private CheckoutService = inject(CheckoutService);
 
   reservationForm: FormGroup;
   availableTimes: string[] = [     
@@ -78,7 +80,7 @@ export class ReservationFormComponent {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.restaurantId = +params['restaurantId'] || 0;
+      this.restaurantId = +params['restaurantId'] || Number(localStorage.getItem("restaurantId"));
       this.loadRestaurantData();
     });
 
@@ -87,6 +89,20 @@ export class ReservationFormComponent {
       this.numberOfPeople.set(value);
     });
 
+    const token = this.route.snapshot.queryParamMap.get('token');
+    const payerId = this.route.snapshot.queryParamMap.get('PayerID');
+
+    if (token && payerId) {
+      this.loading = true;
+
+      this.CheckoutService.capturePaypalOrder(token)
+        .subscribe(response => {
+          if (response.completed) {
+            //this.router.navigate(['/pages/reservation/confirmation', response.reservationId]);
+            this.router.navigate(['/pages/reservation/confirmation']);
+          }
+      });
+    }
   }
 
 
@@ -99,7 +115,7 @@ export class ReservationFormComponent {
     this.restaurantService.getRestaurantById(this.restaurantId).subscribe({
       next: (restaurant) => {
         this.restaurant = restaurant;
-      
+        localStorage.setItem("restaurantId", this.restaurantId.toString());
       },
       error: () => this.snackBar.open('Failed to load restaurant data.', 'Close', { duration: 3000 })
     });
@@ -141,6 +157,15 @@ export class ReservationFormComponent {
     });
   }
 
+  onPayWithPayPal(): void {
+    this.loading = true;
+
+    this.CheckoutService.createPaypalOrder(this.reservation.id)
+    .subscribe(response => {
+      localStorage.setItem('reservationId',this.reservation.id.toString());
+      window.location.href = response.paypalUrl;
+    })
+  }
 
   //TODO: implementar luego en un util porque se utiliza en varios componentes
   private showSnackBar(message: string): void {
